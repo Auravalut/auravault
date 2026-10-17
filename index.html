@@ -73,7 +73,7 @@
     <!-- ================= MAIN EXCHANGE DASHBOARD APP ================= -->
     <div id="app-screen" class="hidden flex-1 flex h-screen overflow-hidden">
         
-        <!-- Sidebar Navigation -->
+        <!-- Sidebar Navigation with Categorized Sections -->
         <aside class="w-60 bg-sidebarBg border-r border-gray-800/80 hidden md:flex flex-col justify-between z-30">
             <div>
                 <!-- Clickable Logo to go Home -->
@@ -84,40 +84,70 @@
                     <span class="text-lg font-extrabold tracking-tight bg-gradient-to-r from-white to-yellow-400 bg-clip-text text-transparent">AuraVault Pro</span>
                 </div>
 
-                <nav class="p-3 space-y-1 text-xs font-medium overflow-y-auto max-h-[calc(100vh-150px)]">
-                    <button onclick="switchView('dashboard')" id="nav-dashboard" class="w-full flex items-center space-x-2.5 px-3.5 py-2.5 rounded-xl transition text-yellow-400 bg-yellow-500/10">
-                        <i class="fa-solid fa-chart-pie w-4"></i><span>Dashboard</span>
-                    </button>
-                    <button onclick="switchView('markets')" id="nav-markets" class="w-full flex items-center space-x-2.5 px-3.5 py-2.5 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
-                        <i class="fa-solid fa-arrow-trend-up w-4"></i><span>Live Markets</span>
-                    </button>
-                    <button onclick="switchView('chart')" id="nav-chart" class="w-full flex items-center space-x-2.5 px-3.5 py-2.5 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
-                        <i class="fa-solid fa-chart-candlestick w-4"></i><span>Trading Chart</span>
-                    </button>
-                    <button onclick="switchView('trade')" id="nav-trade" class="w-full flex items-center space-x-2.5 px-3.5 py-2.5 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
-                        <i class="fa-solid fa-right-left w-4"></i><span>Instant Swap</span>
-                    </button>
-                    <button onclick="switchView('earn')" id="nav-earn" class="w-full flex items-center space-x-2.5 px-3.5 py-2.5 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
-                        <i class="fa-solid fa-coins w-4"></i><span>Earn & Staking</span>
-                    </button>
-                    <button onclick="switchView('wallet')" id="nav-wallet" class="w-full flex items-center space-x-2.5 px-3.5 py-2.5 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
-                        <i class="fa-solid fa-wallet w-4"></i><span>Crypto Wallets</span>
-                    </button>
-                    <button onclick="switchView('send')" id="nav-send" class="w-full flex items-center space-x-2.5 px-3.5 py-2.5 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
-                        <i class="fa-solid fa-paper-plane w-4"></i><span>Send / Transfer</span>
-                    </button>
-                    <button onclick="openReceiveModal()" class="w-full flex items-center space-x-2.5 px-3.5 py-2.5 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
-                        <i class="fa-solid fa-qrcode w-4"></i><span>Receive Crypto</span>
-                    </button>
-                    <button onclick="switchView('support')" id="nav-support" class="w-full flex items-center space-x-2.5 px-3.5 py-2.5 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
-                        <i class="fa-solid fa-headset w-4"></i><span>Customer Support</span>
-                    </button>
-                    <button onclick="switchView('transactions')" id="nav-transactions" class="w-full flex items-center space-x-2.5 px-3.5 py-2.5 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
-                        <i class="fa-solid fa-clock-rotate-left w-4"></i><span>History</span>
-                    </button>
-                    <button onclick="switchView('settings')" id="nav-settings" class="w-full flex items-center space-x-2.5 px-3.5 py-2.5 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
-                        <i class="fa-solid fa-gear w-4"></i><span>Settings</span>
-                    </button>
+                <!-- Structured Menu Sections -->
+                <nav class="p-3 space-y-4 text-xs font-medium overflow-y-auto max-h-[calc(100vh-140px)]">
+                    
+                    <!-- Section 1: General -->
+                    <div>
+                        <p class="px-3 pb-1 text-[10px] font-bold uppercase tracking-wider text-gray-500">General</p>
+                        <div class="space-y-1">
+                            <button onclick="switchView('dashboard')" id="nav-dashboard" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl transition text-yellow-400 bg-yellow-500/10">
+                                <i class="fa-solid fa-chart-pie w-4"></i><span>Dashboard</span>
+                            </button>
+                            <button onclick="switchView('markets')" id="nav-markets" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
+                                <i class="fa-solid fa-arrow-trend-up w-4"></i><span>Live Markets</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Section 2: Trading & Finance -->
+                    <div>
+                        <p class="px-3 pb-1 text-[10px] font-bold uppercase tracking-wider text-gray-500">Trading & Finance</p>
+                        <div class="space-y-1">
+                            <button onclick="switchView('chart')" id="nav-chart" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
+                                <i class="fa-solid fa-chart-candlestick w-4"></i><span>Trading Chart</span>
+                            </button>
+                            <button onclick="switchView('trade')" id="nav-trade" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
+                                <i class="fa-solid fa-right-left w-4"></i><span>Instant Swap</span>
+                            </button>
+                            <button onclick="switchView('earn')" id="nav-earn" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
+                                <i class="fa-solid fa-coins w-4"></i><span>Earn & Staking</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Section 3: Wallet Management -->
+                    <div>
+                        <p class="px-3 pb-1 text-[10px] font-bold uppercase tracking-wider text-gray-500">Wallet</p>
+                        <div class="space-y-1">
+                            <button onclick="switchView('wallet')" id="nav-wallet" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
+                                <i class="fa-solid fa-wallet w-4"></i><span>Crypto Wallets</span>
+                            </button>
+                            <button onclick="switchView('send')" id="nav-send" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
+                                <i class="fa-solid fa-paper-plane w-4"></i><span>Send / Transfer</span>
+                            </button>
+                            <button onclick="openReceiveModal()" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
+                                <i class="fa-solid fa-qrcode w-4"></i><span>Receive Crypto</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Section 4: Support & Security -->
+                    <div>
+                        <p class="px-3 pb-1 text-[10px] font-bold uppercase tracking-wider text-gray-500">Support & Security</p>
+                        <div class="space-y-1">
+                            <button onclick="switchView('support')" id="nav-support" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
+                                <i class="fa-solid fa-headset w-4 text-yellow-400"></i><span class="font-bold text-yellow-300">Customer Support</span>
+                            </button>
+                            <button onclick="switchView('transactions')" id="nav-transactions" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
+                                <i class="fa-solid fa-clock-rotate-left w-4"></i><span>History</span>
+                            </button>
+                            <button onclick="switchView('settings')" id="nav-settings" class="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
+                                <i class="fa-solid fa-gear w-4"></i><span>Settings</span>
+                            </button>
+                        </div>
+                    </div>
+
                 </nav>
             </div>
 
@@ -643,7 +673,7 @@
     <script>
         // =========================================================================
         // ⚙️ BACKEND MULTI-USER & PER-USER CONFIGURATION
-        // Each login has its own specific Success/Failure note and Support Email!
+        // Each user has their own Login, Transfer Success/Failure Note, and Support Email right here!
         // =========================================================================
         const CONFIG = {
             users: [
@@ -766,7 +796,7 @@
                 
                 const navBtn = document.getElementById(`nav-${v}`);
                 if (navBtn) {
-                    navBtn.className = "w-full flex items-center space-x-2.5 px-3.5 py-2.5 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50";
+                    navBtn.className = "w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50";
                 }
             });
 
@@ -775,7 +805,7 @@
 
             const activeNav = document.getElementById(`nav-${viewName}`);
             if (activeNav) {
-                activeNav.className = "w-full flex items-center space-x-2.5 px-3.5 py-2.5 rounded-xl transition text-yellow-400 bg-yellow-500/10";
+                activeNav.className = "w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl transition text-yellow-400 bg-yellow-500/10";
             }
         }
 
@@ -862,16 +892,13 @@
             }
         }
 
-        // Direct Email to Support Form
         function handleSendEmail(event) {
             event.preventDefault();
-            const subject = document.getElementById('email-subject').value;
             alert(`Email successfully sent to your support address (${currentUser.supportEmail})! Our team will respond shortly.`);
             document.getElementById('email-subject').value = '';
             document.getElementById('email-body').value = '';
         }
 
-        // Live Chat Simulation Handler
         function handleChatSubmit(event) {
             event.preventDefault();
             const inputEl = document.getElementById('chat-input');
@@ -879,8 +906,6 @@
             if (!msg) return;
 
             const chatMessages = document.getElementById('chat-messages');
-            
-            // Append User message
             chatMessages.insertAdjacentHTML('beforeend', `
                 <div class="bg-cardBg p-3 rounded-xl border border-gray-700 max-w-[80%] ml-auto text-right">
                     <p class="text-yellow-400 font-bold mb-0.5">You</p>
@@ -891,7 +916,6 @@
             inputEl.value = '';
             chatMessages.scrollTop = chatMessages.scrollHeight;
 
-            // Simulated Agent Response after 1 second
             setTimeout(() => {
                 chatMessages.insertAdjacentHTML('beforeend', `
                     <div class="bg-exchangeBg p-3 rounded-xl border border-gray-800 max-w-[80%]">
