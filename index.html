@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AuraVault — Global Digital Asset Exchange</title>
+    <title>AuraVault Pro — Global Digital Asset & Derivatives Exchange</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -37,7 +37,7 @@
                 <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-yellow-400 to-amber-600 flex items-center justify-center mx-auto shadow-lg shadow-yellow-500/20 mb-4">
                     <i class="fa-solid fa-shield-halved text-black text-2xl font-bold"></i>
                 </div>
-                <h1 class="text-2xl font-extrabold tracking-tight">AuraVault Secure Exchange</h1>
+                <h1 class="text-2xl font-extrabold tracking-tight">AuraVault Pro Access</h1>
                 <p class="text-sm text-gray-400 mt-1">Institutional-Grade Digital Asset Portal</p>
             </div>
 
@@ -61,7 +61,7 @@
                 <p id="login-error" class="text-accentRed text-xs text-center hidden">Invalid username or PIN. Please verify your credentials.</p>
 
                 <button type="submit" class="w-full py-3.5 rounded-xl font-bold text-black bg-gradient-to-r from-yellow-400 to-amber-500 hover:opacity-95 transition shadow-lg shadow-yellow-500/20">
-                    Log In to Exchange <i class="fa-solid fa-arrow-right ml-2"></i>
+                    Log In to Terminal <i class="fa-solid fa-arrow-right ml-2"></i>
                 </button>
             </form>
             <div class="mt-6 text-center">
@@ -81,21 +81,21 @@
                     <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-yellow-400 to-amber-500 flex items-center justify-center shadow-md">
                         <i class="fa-solid fa-cube text-black text-lg font-bold"></i>
                     </div>
-                    <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-white to-yellow-400 bg-clip-text text-transparent">AuraVault</span>
+                    <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-white to-yellow-400 bg-clip-text text-transparent">AuraVault Pro</span>
                 </div>
 
-                <nav class="p-4 space-y-1 text-sm font-medium">
+                <nav class="p-4 space-y-1 text-sm font-medium overflow-y-auto max-h-[calc(100vh-180px)]">
                     <button onclick="switchView('dashboard')" id="nav-dashboard" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition text-yellow-400 bg-yellow-500/10">
                         <i class="fa-solid fa-chart-pie w-5"></i><span>Dashboard</span>
                     </button>
                     <button onclick="switchView('markets')" id="nav-markets" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
-                        <i class="fa-solid fa-arrow-trend-up w-5"></i><span>Markets</span>
+                        <i class="fa-solid fa-arrow-trend-up w-5"></i><span>Live Markets</span>
                     </button>
                     <button onclick="switchView('chart')" id="nav-chart" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
-                        <i class="fa-solid fa-chart-candlestick w-5"></i><span>Trading Chart</span>
+                        <i class="fa-solid fa-chart-candlestick w-5"></i><span>Advanced Trading</span>
                     </button>
                     <button onclick="switchView('trade')" id="nav-trade" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
-                        <i class="fa-solid fa-right-left w-5"></i><span>Spot Swap</span>
+                        <i class="fa-solid fa-right-left w-5"></i><span>Instant Swap</span>
                     </button>
                     <button onclick="switchView('earn')" id="nav-earn" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
                         <i class="fa-solid fa-coins w-5"></i><span>Earn & Staking</span>
@@ -110,7 +110,7 @@
                         <i class="fa-solid fa-qrcode w-5"></i><span>Receive Crypto</span>
                     </button>
                     <button onclick="switchView('transactions')" id="nav-transactions" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
-                        <i class="fa-solid fa-clock-rotate-left w-5"></i><span>History</span>
+                        <i class="fa-solid fa-clock-rotate-left w-5"></i><span>History & Ledger</span>
                     </button>
                     <button onclick="switchView('settings')" id="nav-settings" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
                         <i class="fa-solid fa-gear w-5"></i><span>Security Settings</span>
@@ -140,16 +140,18 @@
             
             <!-- Top Navbar Ticker Bar -->
             <header class="bg-exchangeBg/90 backdrop-blur-md border-b border-gray-800 sticky top-0 z-20 px-6 h-20 flex items-center justify-between">
-                <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-6">
                     <!-- Mobile / Brand Logo Clickable -->
                     <div onclick="switchView('dashboard')" class="md:hidden flex items-center space-x-2 cursor-pointer">
                         <div class="w-8 h-8 rounded-lg bg-yellow-400 flex items-center justify-center font-bold text-black">A</div>
                         <span class="font-bold text-lg">AuraVault</span>
                     </div>
-                    <div class="hidden lg:flex items-center space-x-6 text-xs text-gray-400">
-                        <div class="flex items-center space-x-2"><span>BTC/USDT</span><span class="text-accentGreen font-bold">$64,200.00 +3.8%</span></div>
-                        <div class="flex items-center space-x-2"><span>ETH/USDT</span><span class="text-accentGreen font-bold">$2,450.10 +5.2%</span></div>
-                        <div class="flex items-center space-x-2"><span>SOL/USDT</span><span class="text-accentGreen font-bold">$142.50 +8.1%</span></div>
+                    <!-- Live Live Ticker Stream -->
+                    <div class="hidden lg:flex items-center space-x-8 text-xs text-gray-400">
+                        <div class="flex items-center space-x-2"><span>BTC/USDT</span><span id="ticker-btc" class="text-accentGreen font-bold transition-colors duration-300">$64,200.00</span></div>
+                        <div class="flex items-center space-x-2"><span>ETH/USDT</span><span id="ticker-eth" class="text-accentGreen font-bold transition-colors duration-300">$2,450.10</span></div>
+                        <div class="flex items-center space-x-2"><span>SOL/USDT</span><span id="ticker-sol" class="text-accentGreen font-bold transition-colors duration-300">$142.50</span></div>
+                        <div class="flex items-center space-x-2"><span>AURA/USDT</span><span id="ticker-aura" class="text-accentGreen font-bold transition-colors duration-300">$4.82</span></div>
                     </div>
                 </div>
 
@@ -195,7 +197,7 @@
                                     Send Crypto
                                 </button>
                                 <button onclick="switchView('chart')" class="px-6 py-3 rounded-xl text-sm font-bold text-gray-200 bg-cardBg border border-gray-700 hover:bg-cardHover transition">
-                                    View Charts
+                                    Advanced Charts
                                 </button>
                             </div>
                         </div>
@@ -224,10 +226,10 @@
                         </div>
                     </div>
 
-                    <!-- Market Overview Cards -->
+                    <!-- Market Overview Cards with Live Ticking Prices -->
                     <div class="bg-cardBg border border-gray-800 rounded-3xl p-6 sm:p-8 shadow-xl">
                         <div class="flex items-center justify-between mb-6">
-                            <h3 class="text-xl font-bold">Trending Cryptocurrencies</h3>
+                            <h3 class="text-xl font-bold">Trending Cryptocurrencies (Live Ticker)</h3>
                             <button onclick="switchView('markets')" class="text-xs text-yellow-400 hover:underline font-semibold">View All Markets →</button>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -236,39 +238,64 @@
                                     <span class="font-bold text-sm">Bitcoin (BTC)</span>
                                     <span class="text-accentGreen text-xs font-bold">+3.8%</span>
                                 </div>
-                                <p class="text-xl font-extrabold mt-2">$64,200.00</p>
+                                <p id="card-btc" class="text-xl font-extrabold mt-2 transition-colors duration-300">$64,200.00</p>
                             </div>
                             <div class="bg-exchangeBg border border-gray-800 p-4 rounded-2xl hover:border-yellow-500/50 transition cursor-pointer" onclick="switchView('chart')">
                                 <div class="flex justify-between items-center">
                                     <span class="font-bold text-sm">Ethereum (ETH)</span>
                                     <span class="text-accentGreen text-xs font-bold">+5.2%</span>
                                 </div>
-                                <p class="text-xl font-extrabold mt-2">$2,450.10</p>
+                                <p id="card-eth" class="text-xl font-extrabold mt-2 transition-colors duration-300">$2,450.10</p>
                             </div>
                             <div class="bg-exchangeBg border border-gray-800 p-4 rounded-2xl hover:border-yellow-500/50 transition cursor-pointer" onclick="switchView('chart')">
                                 <div class="flex justify-between items-center">
                                     <span class="font-bold text-sm">Solana (SOL)</span>
                                     <span class="text-accentGreen text-xs font-bold">+8.1%</span>
                                 </div>
-                                <p class="text-xl font-extrabold mt-2">$142.50</p>
+                                <p id="card-sol" class="text-xl font-extrabold mt-2 transition-colors duration-300">$142.50</p>
                             </div>
                             <div class="bg-exchangeBg border border-gray-800 p-4 rounded-2xl hover:border-yellow-500/50 transition cursor-pointer" onclick="switchView('chart')">
                                 <div class="flex justify-between items-center">
                                     <span class="font-bold text-sm">AuraCoin (AURA)</span>
                                     <span class="text-accentGreen text-xs font-bold">+18.4%</span>
                                 </div>
-                                <p class="text-xl font-extrabold mt-2">$4.82</p>
+                                <p id="card-aura" class="text-xl font-extrabold mt-2 transition-colors duration-300">$4.82</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scrollable Additional Market Feed Summary -->
+                    <div class="bg-cardBg border border-gray-800 rounded-3xl p-6 sm:p-8 shadow-xl">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-bold">Platform Highlights & Security</h3>
+                            <span class="text-xs text-gray-400">Audited by CertiK</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-gray-300">
+                            <div class="bg-exchangeBg p-5 rounded-2xl border border-gray-800">
+                                <i class="fa-solid fa-bolt text-yellow-400 text-lg mb-3"></i>
+                                <h4 class="font-bold text-white mb-1">Sub-Millisecond Execution</h4>
+                                <p class="text-xs text-gray-400">Engineered matching engine capable of handling 1,500,000 transactions per second with zero downtime.</p>
+                            </div>
+                            <div class="bg-exchangeBg p-5 rounded-2xl border border-gray-800">
+                                <i class="fa-solid fa-vault text-accentGreen text-lg mb-3"></i>
+                                <h4 class="font-bold text-white mb-1">Secure Multi-Sig Cold Storage</h4>
+                                <p class="text-xs text-gray-400">98% of institutional and retail client digital assets are stored offline in air-gapped hardware enclaves.</p>
+                            </div>
+                            <div class="bg-exchangeBg p-5 rounded-2xl border border-gray-800">
+                                <i class="fa-solid fa-globe text-accentBlue text-lg mb-3"></i>
+                                <h4 class="font-bold text-white mb-1">Global Liquidity Aggregation</h4>
+                                <p class="text-xs text-gray-400">Deep liquidity pooled across top-tier market makers to guarantee optimal pricing on every trade.</p>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- 2. MARKETS VIEW -->
+                <!-- 2. LIVE MARKETS VIEW (Extended Scrollable Table) -->
                 <section id="view-markets" class="space-y-6 hidden">
                     <div class="flex items-center justify-between">
                         <div>
-                            <h2 class="text-2xl font-extrabold">Market Overview</h2>
-                            <p class="text-sm text-gray-400">Real-time spot prices, liquidity and 24h change</p>
+                            <h2 class="text-2xl font-extrabold">Comprehensive Spot Markets</h2>
+                            <p class="text-sm text-gray-400">Real-time live pricing, 24h volume, and order book depth</p>
                         </div>
                     </div>
                     <div class="bg-cardBg border border-gray-800 rounded-3xl p-6 overflow-x-auto shadow-xl">
@@ -276,39 +303,68 @@
                             <thead>
                                 <tr class="border-b border-gray-800 text-xs font-semibold text-gray-400 uppercase">
                                     <th class="pb-4">Asset Pair</th>
-                                    <th class="pb-4">Last Price</th>
+                                    <th class="pb-4">Live Price</th>
                                     <th class="pb-4">24h Change</th>
                                     <th class="pb-4">24h Volume</th>
+                                    <th class="pb-4">Market Cap</th>
                                     <th class="pb-4 text-right">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-800/60 text-sm">
                                 <tr>
                                     <td class="py-4 font-bold flex items-center space-x-3"><div class="w-8 h-8 rounded-full bg-orange-500/20 text-orange-400 flex items-center justify-center font-bold text-xs">B</div><span>BTC / USDT</span></td>
-                                    <td class="py-4 font-semibold">$64,200.00</td>
+                                    <td id="market-btc" class="py-4 font-semibold text-accentGreen">$64,200.00</td>
                                     <td class="py-4 text-accentGreen font-semibold">+3.8%</td>
                                     <td class="py-4 text-gray-400">$1,450,200,100</td>
+                                    <td class="py-4 text-gray-400">$1.26T</td>
                                     <td class="py-4 text-right"><button onclick="switchView('chart')" class="px-3 py-1 bg-yellow-400 text-black font-bold text-xs rounded-lg">Chart</button></td>
                                 </tr>
                                 <tr>
                                     <td class="py-4 font-bold flex items-center space-x-3"><div class="w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-xs">E</div><span>ETH / USDT</span></td>
-                                    <td class="py-4 font-semibold">$2,450.10</td>
+                                    <td id="market-eth" class="py-4 font-semibold text-accentGreen">$2,450.10</td>
                                     <td class="py-4 text-accentGreen font-semibold">+5.2%</td>
                                     <td class="py-4 text-gray-400">$890,320,100</td>
+                                    <td class="py-4 text-gray-400">$294.5B</td>
                                     <td class="py-4 text-right"><button onclick="switchView('chart')" class="px-3 py-1 bg-yellow-400 text-black font-bold text-xs rounded-lg">Chart</button></td>
                                 </tr>
                                 <tr>
                                     <td class="py-4 font-bold flex items-center space-x-3"><div class="w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold text-xs">S</div><span>SOL / USDT</span></td>
-                                    <td class="py-4 font-semibold">$142.50</td>
+                                    <td id="market-sol" class="py-4 font-semibold text-accentGreen">$142.50</td>
                                     <td class="py-4 text-accentGreen font-semibold">+8.1%</td>
                                     <td class="py-4 text-gray-400">$420,100,500</td>
+                                    <td class="py-4 text-gray-400">$65.2B</td>
                                     <td class="py-4 text-right"><button onclick="switchView('chart')" class="px-3 py-1 bg-yellow-400 text-black font-bold text-xs rounded-lg">Chart</button></td>
                                 </tr>
                                 <tr>
                                     <td class="py-4 font-bold flex items-center space-x-3"><div class="w-8 h-8 rounded-full bg-yellow-500/20 text-yellow-400 flex items-center justify-center font-bold text-xs">A</div><span>AURA / USDT</span></td>
-                                    <td class="py-4 font-semibold">$4.82</td>
+                                    <td id="market-aura" class="py-4 font-semibold text-accentGreen">$4.82</td>
                                     <td class="py-4 text-accentGreen font-semibold">+18.4%</td>
                                     <td class="py-4 text-gray-400">$120,490,200</td>
+                                    <td class="py-4 text-gray-400">$4.82B</td>
+                                    <td class="py-4 text-right"><button onclick="switchView('chart')" class="px-3 py-1 bg-yellow-400 text-black font-bold text-xs rounded-lg">Chart</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="py-4 font-bold flex items-center space-x-3"><div class="w-8 h-8 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center font-bold text-xs">R</div><span>XRP / USDT</span></td>
+                                    <td class="py-4 font-semibold">$0.58</td>
+                                    <td class="py-4 text-red-400 font-semibold">-1.2%</td>
+                                    <td class="py-4 text-gray-400">$95,200,100</td>
+                                    <td class="py-4 text-gray-400">$32.1B</td>
+                                    <td class="py-4 text-right"><button onclick="switchView('chart')" class="px-3 py-1 bg-yellow-400 text-black font-bold text-xs rounded-lg">Chart</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="py-4 font-bold flex items-center space-x-3"><div class="w-8 h-8 rounded-full bg-teal-500/20 text-teal-400 flex items-center justify-center font-bold text-xs">C</div><span>ADA / USDT</span></td>
+                                    <td class="py-4 font-semibold">$0.36</td>
+                                    <td class="py-4 text-accentGreen font-semibold">+2.4%</td>
+                                    <td class="py-4 text-gray-400">$48,100,200</td>
+                                    <td class="py-4 text-gray-400">$12.8B</td>
+                                    <td class="py-4 text-right"><button onclick="switchView('chart')" class="px-3 py-1 bg-yellow-400 text-black font-bold text-xs rounded-lg">Chart</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="py-4 font-bold flex items-center space-x-3"><div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-xs">D</div><span>DOGE / USDT</span></td>
+                                    <td class="py-4 font-semibold">$0.12</td>
+                                    <td class="py-4 text-accentGreen font-semibold">+6.7%</td>
+                                    <td class="py-4 text-gray-400">$210,400,100</td>
+                                    <td class="py-4 text-gray-400">$17.5B</td>
                                     <td class="py-4 text-right"><button onclick="switchView('chart')" class="px-3 py-1 bg-yellow-400 text-black font-bold text-xs rounded-lg">Chart</button></td>
                                 </tr>
                             </tbody>
@@ -316,7 +372,7 @@
                     </div>
                 </section>
 
-                <!-- 3. TRADING CHART VIEW (Like Binance/TradingView) -->
+                <!-- 3. ADVANCED TRADING CHART VIEW (Professional Terminal Style) -->
                 <section id="view-chart" class="space-y-6 hidden">
                     <div class="bg-cardBg border border-gray-800 rounded-3xl p-6 shadow-xl space-y-6">
                         <!-- Chart Header Bar -->
@@ -324,14 +380,15 @@
                             <div class="flex items-center space-x-4">
                                 <div class="flex items-center space-x-2">
                                     <span class="text-xl font-extrabold">BTC / USDT</span>
-                                    <span class="text-xs px-2 py-0.5 rounded bg-yellow-500/10 text-yellow-400 font-bold">Spot</span>
+                                    <span class="text-xs px-2 py-0.5 rounded bg-yellow-500/10 text-yellow-400 font-bold">Spot Pro</span>
                                 </div>
                                 <div>
-                                    <p class="text-2xl font-black text-accentGreen">$64,200.00</p>
-                                    <p class="text-xs text-gray-400">24h High: $64,850 | Low: $61,900</p>
+                                    <p id="chart-main-price" class="text-2xl font-black text-accentGreen transition-colors duration-300">$64,200.00</p>
+                                    <p class="text-xs text-gray-400">24h High: $64,850.00 | Low: $61,900.00</p>
                                 </div>
                             </div>
                             <div class="flex items-center space-x-2 text-xs font-semibold">
+                                <button class="px-3 py-1.5 rounded-lg bg-exchangeBg border border-gray-700 hover:border-yellow-400">15m</button>
                                 <button class="px-3 py-1.5 rounded-lg bg-exchangeBg border border-gray-700 hover:border-yellow-400">1H</button>
                                 <button class="px-3 py-1.5 rounded-lg bg-yellow-400 text-black">4H</button>
                                 <button class="px-3 py-1.5 rounded-lg bg-exchangeBg border border-gray-700 hover:border-yellow-400">1D</button>
@@ -339,63 +396,76 @@
                             </div>
                         </div>
 
-                        <!-- Main Chart & Order Book Grid -->
+                        <!-- Main Terminal Grid -->
                         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                            <!-- Simulated Candlestick / TradingView Visual Area -->
-                            <div class="lg:col-span-2 bg-exchangeBg border border-gray-800 rounded-2xl p-6 flex flex-col justify-between h-[400px] relative overflow-hidden">
+                            <!-- Professional SVG Candlestick / Line Chart Terminal -->
+                            <div class="lg:col-span-2 bg-exchangeBg border border-gray-800 rounded-2xl p-6 flex flex-col justify-between h-[450px] relative overflow-hidden">
                                 <div class="absolute inset-0 bg-gradient-to-tr from-accentGreen/5 to-transparent pointer-events-none"></div>
                                 <div class="flex justify-between items-center text-xs text-gray-400 z-10">
-                                    <span>AuraVault Advanced Trading Terminal v2.4</span>
-                                    <span class="text-accentGreen">● Live Feed Connected</span>
+                                    <span>TradingView Pro Terminal — BTC/USDT</span>
+                                    <span class="text-accentGreen">● Websocket Feed Active</span>
                                 </div>
-                                <!-- Simulated Candle Bars Display -->
-                                <div class="flex items-end justify-between h-48 px-2 space-x-2 z-10">
-                                    <div class="w-full bg-accentGreen/40 rounded-t h-[40%]"></div>
-                                    <div class="w-full bg-accentRed/40 rounded-t h-[30%]"></div>
-                                    <div class="w-full bg-accentGreen/40 rounded-t h-[55%]"></div>
-                                    <div class="w-full bg-accentGreen/40 rounded-t h-[70%]"></div>
-                                    <div class="w-full bg-accentRed/40 rounded-t h-[45%]"></div>
-                                    <div class="w-full bg-accentGreen/40 rounded-t h-[80%]"></div>
-                                    <div class="w-full bg-accentGreen/40 rounded-t h-[95%]"></div>
-                                    <div class="w-full bg-accentRed/40 rounded-t h-[60%]"></div>
-                                    <div class="w-full bg-accentGreen/40 rounded-t h-[85%]"></div>
-                                    <div class="w-full bg-accentGreen/40 rounded-t h-[100%]"></div>
+                                
+                                <!-- Simulated Realistic SVG Candlestick Lines -->
+                                <div class="my-auto relative h-64 w-full flex items-end justify-between px-2 z-10">
+                                    <!-- Background Grid Lines -->
+                                    <div class="absolute inset-0 flex flex-col justify-between pointer-events-none opacity-20">
+                                        <div class="border-b border-gray-600 w-full"></div>
+                                        <div class="border-b border-gray-600 w-full"></div>
+                                        <div class="border-b border-gray-600 w-full"></div>
+                                        <div class="border-b border-gray-600 w-full"></div>
+                                    </div>
+                                    <!-- Candlestick SVG Simulation Bars -->
+                                    <div class="w-6 bg-accentGreen h-[45%] rounded relative flex justify-center"><div class="absolute w-0.5 h-full bg-accentGreen"></div></div>
+                                    <div class="w-6 bg-accentRed h-[30%] rounded relative flex justify-center"><div class="absolute w-0.5 h-full bg-accentRed"></div></div>
+                                    <div class="w-6 bg-accentGreen h-[60%] rounded relative flex justify-center"><div class="absolute w-0.5 h-full bg-accentGreen"></div></div>
+                                    <div class="w-6 bg-accentGreen h-[75%] rounded relative flex justify-center"><div class="absolute w-0.5 h-full bg-accentGreen"></div></div>
+                                    <div class="w-6 bg-accentRed h-[50%] rounded relative flex justify-center"><div class="absolute w-0.5 h-full bg-accentRed"></div></div>
+                                    <div class="w-6 bg-accentGreen h-[65%] rounded relative flex justify-center"><div class="absolute w-0.5 h-full bg-accentGreen"></div></div>
+                                    <div class="w-6 bg-accentGreen h-[85%] rounded relative flex justify-center"><div class="absolute w-0.5 h-full bg-accentGreen"></div></div>
+                                    <div class="w-6 bg-accentRed h-[70%] rounded relative flex justify-center"><div class="absolute w-0.5 h-full bg-accentRed"></div></div>
+                                    <div class="w-6 bg-accentGreen h-[90%] rounded relative flex justify-center"><div class="absolute w-0.5 h-full bg-accentGreen"></div></div>
+                                    <div class="w-6 bg-accentGreen h-[98%] rounded relative flex justify-center"><div class="absolute w-0.5 h-full bg-accentGreen"></div></div>
                                 </div>
+
                                 <div class="flex justify-between text-[11px] text-gray-500 z-10">
-                                    <span>09:00</span><span>12:00</span><span>15:00</span><span>18:00</span><span>21:00</span><span>Now</span>
+                                    <span>08:00</span><span>10:00</span><span>12:00</span><span>14:00</span><span>16:00</span><span>18:00</span><span>Live</span>
                                 </div>
                             </div>
 
-                            <!-- Quick Trade Panel -->
+                            <!-- Quick Order Book & Buy/Sell Panel -->
                             <div class="bg-exchangeBg border border-gray-800 rounded-2xl p-5 flex flex-col justify-between">
-                                <h3 class="font-bold text-sm mb-4">Place Spot Order</h3>
-                                <div class="space-y-3 text-xs">
-                                    <div>
-                                        <label class="text-gray-400">Order Type</label>
-                                        <select class="w-full mt-1 bg-cardBg border border-gray-700 rounded-xl p-2.5 text-white font-bold">
-                                            <option>Limit Order</option>
-                                            <option>Market Order</option>
-                                        </select>
+                                <div>
+                                    <div class="flex justify-between items-center mb-3">
+                                        <h3 class="font-bold text-sm">Order Book (Asks / Bids)</h3>
+                                        <span class="text-[10px] text-gray-400">Spread: 0.12</span>
                                     </div>
-                                    <div>
-                                        <label class="text-gray-400">Price (USDT)</label>
-                                        <input type="text" value="64,200.00" class="w-full mt-1 bg-cardBg border border-gray-700 rounded-xl p-2.5 text-white font-bold">
-                                    </div>
-                                    <div>
-                                        <label class="text-gray-400">Amount (BTC)</label>
-                                        <input type="number" placeholder="0.00" class="w-full mt-1 bg-cardBg border border-gray-700 rounded-xl p-2.5 text-white font-bold">
+                                    <!-- Order Book Mini Table -->
+                                    <div class="space-y-1 text-[11px] font-mono mb-4">
+                                        <div class="flex justify-between text-accentRed"><span>64,208.50</span><span>0.421 BTC</span></div>
+                                        <div class="flex justify-between text-accentRed"><span>64,204.10</span><span>1.105 BTC</span></div>
+                                        <div class="flex justify-between text-yellow-400 font-bold border-y border-gray-800 py-1"><span>64,200.00</span><span>Market Price</span></div>
+                                        <div class="flex justify-between text-accentGreen"><span>64,195.80</span><span>0.850 BTC</span></div>
+                                        <div class="flex justify-between text-accentGreen"><span>64,190.00</span><span>2.410 BTC</span></div>
                                     </div>
                                 </div>
-                                <div class="grid grid-cols-2 gap-3 mt-4">
-                                    <button onclick="alert('Buy order placed successfully into matching engine.')" class="py-3 bg-accentGreen font-bold text-black rounded-xl hover:opacity-90">Buy / Long</button>
-                                    <button onclick="alert('Sell order placed successfully into matching engine.')" class="py-3 bg-accentRed font-bold text-white rounded-xl hover:opacity-90">Sell / Short</button>
+
+                                <div class="space-y-3 text-xs border-t border-gray-800 pt-4">
+                                    <div>
+                                        <label class="text-gray-400">Order Amount (BTC)</label>
+                                        <input type="number" placeholder="0.00" class="w-full mt-1 bg-cardBg border border-gray-700 rounded-xl p-2.5 text-white font-bold">
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <button onclick="alert('Buy order executed successfully.')" class="py-3 bg-accentGreen font-bold text-black rounded-xl hover:opacity-90">Buy Long</button>
+                                        <button onclick="alert('Sell order executed successfully.')" class="py-3 bg-accentRed font-bold text-white rounded-xl hover:opacity-90">Sell Short</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- 4. SPOT & SWAP TRADE VIEW -->
+                <!-- 4. INSTANT SPOT SWAP VIEW -->
                 <section id="view-trade" class="space-y-6 hidden">
                     <div class="max-w-xl mx-auto bg-cardBg border border-gray-800 rounded-3xl p-8 shadow-xl">
                         <div class="flex items-center justify-between mb-6">
@@ -438,7 +508,7 @@
 
                 <!-- 5. EARN & STAKING VIEW -->
                 <section id="view-earn" class="space-y-6 hidden">
-                    <h2 class="text-2xl font-extrabold">AuraVault Earn & Staking</h2>
+                    <h2 class="text-2xl font-extrabold">AuraVault Earn & Staking Pools</h2>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div class="bg-cardBg border border-gray-800 p-6 rounded-3xl flex flex-col justify-between">
                             <div>
@@ -469,20 +539,20 @@
 
                 <!-- 6. CRYPTO WALLETS VIEW -->
                 <section id="view-wallet" class="space-y-6 hidden">
-                    <h2 class="text-2xl font-extrabold">Your Crypto Wallets</h2>
+                    <h2 class="text-2xl font-extrabold">Your Multi-Chain Wallets</h2>
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
                         <div class="bg-cardBg border border-gray-800 p-6 rounded-3xl shadow-xl">
-                            <p class="text-xs text-gray-400 uppercase font-semibold">Bitcoin</p>
+                            <p class="text-xs text-gray-400 uppercase font-semibold">Bitcoin Wallet</p>
                             <p class="text-2xl font-extrabold mt-2">1.25 BTC</p>
                             <p class="text-sm text-accentGreen mt-1">≈ $80,250.00</p>
                         </div>
                         <div class="bg-cardBg border border-gray-800 p-6 rounded-3xl shadow-xl">
-                            <p class="text-xs text-gray-400 uppercase font-semibold">Ethereum</p>
+                            <p class="text-xs text-gray-400 uppercase font-semibold">Ethereum Wallet</p>
                             <p class="text-2xl font-extrabold mt-2">18.45 ETH</p>
                             <p class="text-sm text-accentGreen mt-1">≈ $45,204.34</p>
                         </div>
                         <div class="bg-cardBg border border-gray-800 p-6 rounded-3xl shadow-xl">
-                            <p class="text-xs text-gray-400 uppercase font-semibold">Solana</p>
+                            <p class="text-xs text-gray-400 uppercase font-semibold">Solana Wallet</p>
                             <p class="text-2xl font-extrabold mt-2">145.00 SOL</p>
                             <p class="text-sm text-accentGreen mt-1">≈ $20,662.50</p>
                         </div>
@@ -538,7 +608,7 @@
 
                 <!-- 8. TRANSACTIONS VIEW -->
                 <section id="view-transactions" class="space-y-6 hidden">
-                    <h2 class="text-2xl font-extrabold">Transaction History</h2>
+                    <h2 class="text-2xl font-extrabold">Transaction History & Public Ledger</h2>
                     <div class="bg-cardBg border border-gray-800 rounded-3xl p-6 shadow-xl">
                         <div id="transaction-list" class="space-y-3">
                             <div class="flex items-center justify-between p-4 rounded-2xl bg-exchangeBg border border-gray-800">
@@ -610,7 +680,7 @@
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
-            <p class="text-xs text-gray-400 mb-6">Scan QR code or copy address to receive funds directly into your AuraVault wallet.</p>
+            <p class="text-xs text-gray-400 mb-6">Scan QR code or copy address to receive funds directly into your AuraVault Pro wallet.</p>
             
             <div class="bg-white p-4 rounded-2xl w-48 h-48 mx-auto flex items-center justify-center mb-6 shadow-inner">
                 <i class="fa-solid fa-qrcode text-8xl text-black"></i>
@@ -652,6 +722,14 @@
         let currentUser = null;
         let isBalanceHidden = false;
 
+        // Base prices for live fluctuating tickers
+        let prices = {
+            btc: 64200.00,
+            eth: 2450.10,
+            sol: 142.50,
+            aura: 4.82
+        };
+
         // Check active session on load
         window.addEventListener('DOMContentLoaded', () => {
             const savedUser = sessionStorage.getItem('auravault_active_user');
@@ -661,7 +739,41 @@
                     showApp();
                 }
             }
+            // Start live price ticker simulation loop
+            setInterval(simulateLivePrices, 3000);
         });
+
+        // Live Price Fluctuation Simulation (Binance ticker effect)
+        function simulateLivePrices() {
+            // Random micro-fluctuations
+            prices.btc += (Math.random() - 0.48) * 12.5;
+            prices.eth += (Math.random() - 0.48) * 2.1;
+            prices.sol += (Math.random() - 0.48) * 0.8;
+            prices.aura += (Math.random() - 0.48) * 0.03;
+
+            updatePriceDisplay('ticker-btc', 'card-btc', 'market-btc', 'chart-main-price', prices.btc, 2);
+            updatePriceDisplay('ticker-eth', 'card-eth', 'market-eth', null, prices.eth, 2);
+            updatePriceDisplay('ticker-sol', 'card-sol', 'market-sol', null, prices.sol, 2);
+            updatePriceDisplay('ticker-aura', 'card-aura', 'market-aura', null, prices.aura, 2);
+        }
+
+        function updatePriceDisplay(tickerId, cardId, marketId, chartId, val, decimals) {
+            const formatted = '$' + val.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+            
+            [tickerId, cardId, marketId, chartId].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.innerText = formatted;
+                    // Flash green or red briefly
+                    el.classList.remove('text-accentGreen', 'text-accentRed');
+                    el.classList.add(Math.random() > 0.5 ? 'text-accentGreen' : 'text-accentRed');
+                    setTimeout(() => {
+                        el.classList.remove('text-accentRed');
+                        el.classList.add('text-accentGreen');
+                    }, 1000);
+                }
+            });
+        }
 
         // Handle Login
         function handleLogin(event) {
