@@ -34,7 +34,7 @@
         <div class="absolute inset-0 bg-gradient-to-tr from-blue-600/10 to-yellow-500/10 blur-[130px] pointer-events-none"></div>
         <div class="max-w-md w-full bg-cardBg border border-gray-800 rounded-3xl p-8 shadow-2xl relative z-10">
             <div class="text-center mb-8">
-                <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-yellow-500 to-amber-600 flex items-center justify-center mx-auto shadow-lg shadow-yellow-500/20 mb-4">
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-yellow-400 to-amber-600 flex items-center justify-center mx-auto shadow-lg shadow-yellow-500/20 mb-4">
                     <i class="fa-solid fa-shield-halved text-black text-2xl font-bold"></i>
                 </div>
                 <h1 class="text-2xl font-extrabold tracking-tight">AuraVault Secure Exchange</h1>
@@ -65,7 +65,7 @@
                 </button>
             </form>
             <div class="mt-6 text-center">
-                <p class="text-xs text-gray-500">Secured by 256-Bit Hardware Enclave Encryption</p>
+                <p class="text-xs text-gray-500">Auto-locks when browser or tab is closed</p>
             </div>
         </div>
     </div>
@@ -76,7 +76,8 @@
         <!-- Sidebar Navigation -->
         <aside class="w-64 bg-sidebarBg border-r border-gray-800/80 hidden md:flex flex-col justify-between z-30">
             <div>
-                <div class="h-20 flex items-center px-6 space-x-3 border-b border-gray-800/80">
+                <!-- Clickable Logo to go Home -->
+                <div onclick="switchView('dashboard')" class="h-20 flex items-center px-6 space-x-3 border-b border-gray-800/80 cursor-pointer hover:bg-gray-800/20 transition">
                     <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-yellow-400 to-amber-500 flex items-center justify-center shadow-md">
                         <i class="fa-solid fa-cube text-black text-lg font-bold"></i>
                     </div>
@@ -90,17 +91,23 @@
                     <button onclick="switchView('markets')" id="nav-markets" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
                         <i class="fa-solid fa-arrow-trend-up w-5"></i><span>Markets</span>
                     </button>
+                    <button onclick="switchView('chart')" id="nav-chart" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
+                        <i class="fa-solid fa-chart-candlestick w-5"></i><span>Trading Chart</span>
+                    </button>
                     <button onclick="switchView('trade')" id="nav-trade" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
-                        <i class="fa-solid fa-right-left w-5"></i><span>Spot & Swap</span>
+                        <i class="fa-solid fa-right-left w-5"></i><span>Spot Swap</span>
                     </button>
                     <button onclick="switchView('earn')" id="nav-earn" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
                         <i class="fa-solid fa-coins w-5"></i><span>Earn & Staking</span>
                     </button>
                     <button onclick="switchView('wallet')" id="nav-wallet" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
-                        <i class="fa-solid fa-wallet w-5"></i><span>Assets Wallet</span>
+                        <i class="fa-solid fa-wallet w-5"></i><span>Crypto Wallets</span>
                     </button>
                     <button onclick="switchView('send')" id="nav-send" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
                         <i class="fa-solid fa-paper-plane w-5"></i><span>Send / Transfer</span>
+                    </button>
+                    <button onclick="openReceiveModal()" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
+                        <i class="fa-solid fa-qrcode w-5"></i><span>Receive Crypto</span>
                     </button>
                     <button onclick="switchView('transactions')" id="nav-transactions" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50">
                         <i class="fa-solid fa-clock-rotate-left w-5"></i><span>History</span>
@@ -111,7 +118,7 @@
                 </nav>
             </div>
 
-            <!-- Profile Widget -->
+            <!-- Profile Widget & Logout -->
             <div class="p-4 border-t border-gray-800">
                 <div class="flex items-center justify-between bg-exchangeBg p-3 rounded-2xl border border-gray-800">
                     <div class="flex items-center space-x-3 overflow-hidden">
@@ -134,14 +141,15 @@
             <!-- Top Navbar Ticker Bar -->
             <header class="bg-exchangeBg/90 backdrop-blur-md border-b border-gray-800 sticky top-0 z-20 px-6 h-20 flex items-center justify-between">
                 <div class="flex items-center space-x-4">
-                    <div class="md:hidden flex items-center space-x-2">
+                    <!-- Mobile / Brand Logo Clickable -->
+                    <div onclick="switchView('dashboard')" class="md:hidden flex items-center space-x-2 cursor-pointer">
                         <div class="w-8 h-8 rounded-lg bg-yellow-400 flex items-center justify-center font-bold text-black">A</div>
                         <span class="font-bold text-lg">AuraVault</span>
                     </div>
                     <div class="hidden lg:flex items-center space-x-6 text-xs text-gray-400">
                         <div class="flex items-center space-x-2"><span>BTC/USDT</span><span class="text-accentGreen font-bold">$64,200.00 +3.8%</span></div>
                         <div class="flex items-center space-x-2"><span>ETH/USDT</span><span class="text-accentGreen font-bold">$2,450.10 +5.2%</span></div>
-                        <div class="flex items-center space-x-2"><span>AURA/USDT</span><span class="text-accentGreen font-bold">$4.82 +18.4%</span></div>
+                        <div class="flex items-center space-x-2"><span>SOL/USDT</span><span class="text-accentGreen font-bold">$142.50 +8.1%</span></div>
                     </div>
                 </div>
 
@@ -149,8 +157,11 @@
                     <button onclick="openDepositModal()" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-black bg-yellow-400 hover:bg-yellow-300 transition shadow-md shadow-yellow-500/20">
                         <i class="fa-solid fa-plus mr-1"></i> Deposit
                     </button>
-                    <button onclick="switchView('send')" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-gray-200 bg-cardBg border border-gray-700 hover:bg-cardHover transition">
-                        <i class="fa-solid fa-paper-plane mr-1 text-yellow-400"></i> Send
+                    <button onclick="openReceiveModal()" class="px-3 py-2 rounded-xl text-xs sm:text-sm font-bold text-gray-200 bg-cardBg border border-gray-700 hover:bg-cardHover transition">
+                        <i class="fa-solid fa-qrcode mr-1 text-yellow-400"></i> Receive
+                    </button>
+                    <button onclick="handleLogout()" class="px-3 py-2 rounded-xl text-xs sm:text-sm font-bold text-red-400 bg-red-500/10 border border-red-500/30 hover:bg-red-500/20 transition">
+                        <i class="fa-solid fa-right-from-bracket mr-1"></i> Logout
                     </button>
                 </div>
             </header>
@@ -178,10 +189,13 @@
                             </div>
                             <div class="mt-8 flex flex-wrap gap-4">
                                 <button onclick="openDepositModal()" class="px-6 py-3 rounded-xl text-sm font-bold text-black bg-yellow-400 hover:bg-yellow-300 transition shadow-lg shadow-yellow-500/20">
-                                    Deposit Crypto
+                                    Deposit Funds
                                 </button>
-                                <button onclick="switchView('trade')" class="px-6 py-3 rounded-xl text-sm font-bold text-gray-200 bg-cardBg border border-gray-700 hover:bg-cardHover transition">
-                                    Spot Trade
+                                <button onclick="switchView('send')" class="px-6 py-3 rounded-xl text-sm font-bold text-gray-200 bg-cardBg border border-gray-700 hover:bg-cardHover transition">
+                                    Send Crypto
+                                </button>
+                                <button onclick="switchView('chart')" class="px-6 py-3 rounded-xl text-sm font-bold text-gray-200 bg-cardBg border border-gray-700 hover:bg-cardHover transition">
+                                    View Charts
                                 </button>
                             </div>
                         </div>
@@ -214,32 +228,36 @@
                     <div class="bg-cardBg border border-gray-800 rounded-3xl p-6 sm:p-8 shadow-xl">
                         <div class="flex items-center justify-between mb-6">
                             <h3 class="text-xl font-bold">Trending Cryptocurrencies</h3>
-                            <button onclick="switchView('markets')" class="text-xs text-yellow-400 hover:underline font-semibold">View Markets →</button>
+                            <button onclick="switchView('markets')" class="text-xs text-yellow-400 hover:underline font-semibold">View All Markets →</button>
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <div class="bg-exchangeBg border border-gray-800 p-5 rounded-2xl hover:border-yellow-500/50 transition">
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                            <div class="bg-exchangeBg border border-gray-800 p-4 rounded-2xl hover:border-yellow-500/50 transition cursor-pointer" onclick="switchView('chart')">
                                 <div class="flex justify-between items-center">
-                                    <span class="font-bold">AuraCoin (AURA)</span>
-                                    <span class="text-accentGreen text-xs font-bold">+18.4%</span>
-                                </div>
-                                <p class="text-2xl font-extrabold mt-3">$4.82</p>
-                                <p class="text-xs text-gray-500 mt-1">Vol: $120.4M</p>
-                            </div>
-                            <div class="bg-exchangeBg border border-gray-800 p-5 rounded-2xl hover:border-yellow-500/50 transition">
-                                <div class="flex justify-between items-center">
-                                    <span class="font-bold">Ethereum (ETH)</span>
-                                    <span class="text-accentGreen text-xs font-bold">+5.2%</span>
-                                </div>
-                                <p class="text-2xl font-extrabold mt-3">$2,450.10</p>
-                                <p class="text-xs text-gray-500 mt-1">Vol: $84.1M</p>
-                            </div>
-                            <div class="bg-exchangeBg border border-gray-800 p-5 rounded-2xl hover:border-yellow-500/50 transition">
-                                <div class="flex justify-between items-center">
-                                    <span class="font-bold">Bitcoin (BTC)</span>
+                                    <span class="font-bold text-sm">Bitcoin (BTC)</span>
                                     <span class="text-accentGreen text-xs font-bold">+3.8%</span>
                                 </div>
-                                <p class="text-2xl font-extrabold mt-3">$64,200.00</p>
-                                <p class="text-xs text-gray-500 mt-1">Vol: $450.8M</p>
+                                <p class="text-xl font-extrabold mt-2">$64,200.00</p>
+                            </div>
+                            <div class="bg-exchangeBg border border-gray-800 p-4 rounded-2xl hover:border-yellow-500/50 transition cursor-pointer" onclick="switchView('chart')">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-sm">Ethereum (ETH)</span>
+                                    <span class="text-accentGreen text-xs font-bold">+5.2%</span>
+                                </div>
+                                <p class="text-xl font-extrabold mt-2">$2,450.10</p>
+                            </div>
+                            <div class="bg-exchangeBg border border-gray-800 p-4 rounded-2xl hover:border-yellow-500/50 transition cursor-pointer" onclick="switchView('chart')">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-sm">Solana (SOL)</span>
+                                    <span class="text-accentGreen text-xs font-bold">+8.1%</span>
+                                </div>
+                                <p class="text-xl font-extrabold mt-2">$142.50</p>
+                            </div>
+                            <div class="bg-exchangeBg border border-gray-800 p-4 rounded-2xl hover:border-yellow-500/50 transition cursor-pointer" onclick="switchView('chart')">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-sm">AuraCoin (AURA)</span>
+                                    <span class="text-accentGreen text-xs font-bold">+18.4%</span>
+                                </div>
+                                <p class="text-xl font-extrabold mt-2">$4.82</p>
                             </div>
                         </div>
                     </div>
@@ -266,32 +284,118 @@
                             </thead>
                             <tbody class="divide-y divide-gray-800/60 text-sm">
                                 <tr>
-                                    <td class="py-4 font-bold flex items-center space-x-3"><div class="w-8 h-8 rounded-full bg-yellow-500/20 text-yellow-400 flex items-center justify-center font-bold text-xs">A</div><span>AURA / USDT</span></td>
-                                    <td class="py-4 font-semibold">$4.82</td>
-                                    <td class="py-4 text-accentGreen font-semibold">+18.4%</td>
-                                    <td class="py-4 text-gray-400">$120,490,200</td>
-                                    <td class="py-4 text-right"><button onclick="switchView('trade')" class="px-3 py-1 bg-yellow-400 text-black font-bold text-xs rounded-lg">Trade</button></td>
-                                </tr>
-                                <tr>
                                     <td class="py-4 font-bold flex items-center space-x-3"><div class="w-8 h-8 rounded-full bg-orange-500/20 text-orange-400 flex items-center justify-center font-bold text-xs">B</div><span>BTC / USDT</span></td>
                                     <td class="py-4 font-semibold">$64,200.00</td>
                                     <td class="py-4 text-accentGreen font-semibold">+3.8%</td>
                                     <td class="py-4 text-gray-400">$1,450,200,100</td>
-                                    <td class="py-4 text-right"><button onclick="switchView('trade')" class="px-3 py-1 bg-yellow-400 text-black font-bold text-xs rounded-lg">Trade</button></td>
+                                    <td class="py-4 text-right"><button onclick="switchView('chart')" class="px-3 py-1 bg-yellow-400 text-black font-bold text-xs rounded-lg">Chart</button></td>
                                 </tr>
                                 <tr>
                                     <td class="py-4 font-bold flex items-center space-x-3"><div class="w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-xs">E</div><span>ETH / USDT</span></td>
                                     <td class="py-4 font-semibold">$2,450.10</td>
                                     <td class="py-4 text-accentGreen font-semibold">+5.2%</td>
                                     <td class="py-4 text-gray-400">$890,320,100</td>
-                                    <td class="py-4 text-right"><button onclick="switchView('trade')" class="px-3 py-1 bg-yellow-400 text-black font-bold text-xs rounded-lg">Trade</button></td>
+                                    <td class="py-4 text-right"><button onclick="switchView('chart')" class="px-3 py-1 bg-yellow-400 text-black font-bold text-xs rounded-lg">Chart</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="py-4 font-bold flex items-center space-x-3"><div class="w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold text-xs">S</div><span>SOL / USDT</span></td>
+                                    <td class="py-4 font-semibold">$142.50</td>
+                                    <td class="py-4 text-accentGreen font-semibold">+8.1%</td>
+                                    <td class="py-4 text-gray-400">$420,100,500</td>
+                                    <td class="py-4 text-right"><button onclick="switchView('chart')" class="px-3 py-1 bg-yellow-400 text-black font-bold text-xs rounded-lg">Chart</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="py-4 font-bold flex items-center space-x-3"><div class="w-8 h-8 rounded-full bg-yellow-500/20 text-yellow-400 flex items-center justify-center font-bold text-xs">A</div><span>AURA / USDT</span></td>
+                                    <td class="py-4 font-semibold">$4.82</td>
+                                    <td class="py-4 text-accentGreen font-semibold">+18.4%</td>
+                                    <td class="py-4 text-gray-400">$120,490,200</td>
+                                    <td class="py-4 text-right"><button onclick="switchView('chart')" class="px-3 py-1 bg-yellow-400 text-black font-bold text-xs rounded-lg">Chart</button></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </section>
 
-                <!-- 3. SPOT & SWAP TRADE VIEW -->
+                <!-- 3. TRADING CHART VIEW (Like Binance/TradingView) -->
+                <section id="view-chart" class="space-y-6 hidden">
+                    <div class="bg-cardBg border border-gray-800 rounded-3xl p-6 shadow-xl space-y-6">
+                        <!-- Chart Header Bar -->
+                        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-gray-800 pb-4">
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-xl font-extrabold">BTC / USDT</span>
+                                    <span class="text-xs px-2 py-0.5 rounded bg-yellow-500/10 text-yellow-400 font-bold">Spot</span>
+                                </div>
+                                <div>
+                                    <p class="text-2xl font-black text-accentGreen">$64,200.00</p>
+                                    <p class="text-xs text-gray-400">24h High: $64,850 | Low: $61,900</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2 text-xs font-semibold">
+                                <button class="px-3 py-1.5 rounded-lg bg-exchangeBg border border-gray-700 hover:border-yellow-400">1H</button>
+                                <button class="px-3 py-1.5 rounded-lg bg-yellow-400 text-black">4H</button>
+                                <button class="px-3 py-1.5 rounded-lg bg-exchangeBg border border-gray-700 hover:border-yellow-400">1D</button>
+                                <button class="px-3 py-1.5 rounded-lg bg-exchangeBg border border-gray-700 hover:border-yellow-400">1W</button>
+                            </div>
+                        </div>
+
+                        <!-- Main Chart & Order Book Grid -->
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                            <!-- Simulated Candlestick / TradingView Visual Area -->
+                            <div class="lg:col-span-2 bg-exchangeBg border border-gray-800 rounded-2xl p-6 flex flex-col justify-between h-[400px] relative overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-tr from-accentGreen/5 to-transparent pointer-events-none"></div>
+                                <div class="flex justify-between items-center text-xs text-gray-400 z-10">
+                                    <span>AuraVault Advanced Trading Terminal v2.4</span>
+                                    <span class="text-accentGreen">● Live Feed Connected</span>
+                                </div>
+                                <!-- Simulated Candle Bars Display -->
+                                <div class="flex items-end justify-between h-48 px-2 space-x-2 z-10">
+                                    <div class="w-full bg-accentGreen/40 rounded-t h-[40%]"></div>
+                                    <div class="w-full bg-accentRed/40 rounded-t h-[30%]"></div>
+                                    <div class="w-full bg-accentGreen/40 rounded-t h-[55%]"></div>
+                                    <div class="w-full bg-accentGreen/40 rounded-t h-[70%]"></div>
+                                    <div class="w-full bg-accentRed/40 rounded-t h-[45%]"></div>
+                                    <div class="w-full bg-accentGreen/40 rounded-t h-[80%]"></div>
+                                    <div class="w-full bg-accentGreen/40 rounded-t h-[95%]"></div>
+                                    <div class="w-full bg-accentRed/40 rounded-t h-[60%]"></div>
+                                    <div class="w-full bg-accentGreen/40 rounded-t h-[85%]"></div>
+                                    <div class="w-full bg-accentGreen/40 rounded-t h-[100%]"></div>
+                                </div>
+                                <div class="flex justify-between text-[11px] text-gray-500 z-10">
+                                    <span>09:00</span><span>12:00</span><span>15:00</span><span>18:00</span><span>21:00</span><span>Now</span>
+                                </div>
+                            </div>
+
+                            <!-- Quick Trade Panel -->
+                            <div class="bg-exchangeBg border border-gray-800 rounded-2xl p-5 flex flex-col justify-between">
+                                <h3 class="font-bold text-sm mb-4">Place Spot Order</h3>
+                                <div class="space-y-3 text-xs">
+                                    <div>
+                                        <label class="text-gray-400">Order Type</label>
+                                        <select class="w-full mt-1 bg-cardBg border border-gray-700 rounded-xl p-2.5 text-white font-bold">
+                                            <option>Limit Order</option>
+                                            <option>Market Order</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="text-gray-400">Price (USDT)</label>
+                                        <input type="text" value="64,200.00" class="w-full mt-1 bg-cardBg border border-gray-700 rounded-xl p-2.5 text-white font-bold">
+                                    </div>
+                                    <div>
+                                        <label class="text-gray-400">Amount (BTC)</label>
+                                        <input type="number" placeholder="0.00" class="w-full mt-1 bg-cardBg border border-gray-700 rounded-xl p-2.5 text-white font-bold">
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-3 mt-4">
+                                    <button onclick="alert('Buy order placed successfully into matching engine.')" class="py-3 bg-accentGreen font-bold text-black rounded-xl hover:opacity-90">Buy / Long</button>
+                                    <button onclick="alert('Sell order placed successfully into matching engine.')" class="py-3 bg-accentRed font-bold text-white rounded-xl hover:opacity-90">Sell / Short</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. SPOT & SWAP TRADE VIEW -->
                 <section id="view-trade" class="space-y-6 hidden">
                     <div class="max-w-xl mx-auto bg-cardBg border border-gray-800 rounded-3xl p-8 shadow-xl">
                         <div class="flex items-center justify-between mb-6">
@@ -305,8 +409,9 @@
                                     <input type="number" placeholder="0.0" class="bg-transparent text-xl font-bold focus:outline-none w-1/2">
                                     <select class="bg-cardBg border border-gray-700 rounded-xl px-3 py-1.5 text-sm font-bold">
                                         <option>USDT</option>
-                                        <option>ETH</option>
                                         <option>BTC</option>
+                                        <option>ETH</option>
+                                        <option>SOL</option>
                                     </select>
                                 </div>
                             </div>
@@ -320,17 +425,18 @@
                                     <select class="bg-cardBg border border-gray-700 rounded-xl px-3 py-1.5 text-sm font-bold">
                                         <option>AURA</option>
                                         <option>USDT</option>
+                                        <option>ETH</option>
                                     </select>
                                 </div>
                             </div>
-                            <button onclick="alert('Spot trade executed successfully across decentralized liquidity pools.')" class="w-full py-4 rounded-xl font-bold text-black bg-gradient-to-r from-yellow-400 to-amber-500 hover:opacity-95 transition mt-4 shadow-lg shadow-yellow-500/20">
+                            <button onclick="alert('Swap executed successfully across decentralized liquidity pools.')" class="w-full py-4 rounded-xl font-bold text-black bg-gradient-to-r from-yellow-400 to-amber-500 hover:opacity-95 transition mt-4 shadow-lg shadow-yellow-500/20">
                                 Execute Instant Order
                             </button>
                         </div>
                     </div>
                 </section>
 
-                <!-- 4. EARN & STAKING VIEW -->
+                <!-- 5. EARN & STAKING VIEW -->
                 <section id="view-earn" class="space-y-6 hidden">
                     <h2 class="text-2xl font-extrabold">AuraVault Earn & Staking</h2>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -352,38 +458,43 @@
                         </div>
                         <div class="bg-cardBg border border-gray-800 p-6 rounded-3xl flex flex-col justify-between">
                             <div>
-                                <span class="text-xs font-bold text-orange-400 bg-orange-500/10 px-2.5 py-1 rounded-lg">Locked 90D</span>
-                                <h3 class="text-xl font-bold mt-4">Bitcoin (BTC)</h3>
-                                <p class="text-3xl font-extrabold text-accentGreen mt-2">4.5% <span class="text-xs text-gray-400">APY</span></p>
+                                <span class="text-xs font-bold text-purple-400 bg-purple-500/10 px-2.5 py-1 rounded-lg">Locked 60D</span>
+                                <h3 class="text-xl font-bold mt-4">Solana (SOL)</h3>
+                                <p class="text-3xl font-extrabold text-accentGreen mt-2">11.4% <span class="text-xs text-gray-400">APY</span></p>
                             </div>
-                            <button onclick="alert('Staked successfully into 90D locked pool.')" class="mt-6 w-full py-3 bg-exchangeBg hover:bg-gray-800 font-bold text-xs rounded-xl border border-gray-700 transition">Stake Now</button>
+                            <button onclick="alert('Staked successfully into Solana locked pool.')" class="mt-6 w-full py-3 bg-exchangeBg hover:bg-gray-800 font-bold text-xs rounded-xl border border-gray-700 transition">Stake Now</button>
                         </div>
                     </div>
                 </section>
 
-                <!-- 5. WALLET / ASSETS VIEW -->
+                <!-- 6. CRYPTO WALLETS VIEW -->
                 <section id="view-wallet" class="space-y-6 hidden">
-                    <h2 class="text-2xl font-extrabold">Your Asset Portfolio</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <h2 class="text-2xl font-extrabold">Your Crypto Wallets</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
                         <div class="bg-cardBg border border-gray-800 p-6 rounded-3xl shadow-xl">
-                            <p class="text-xs text-gray-400 uppercase font-semibold">AuraCoin</p>
-                            <p class="text-3xl font-extrabold mt-2">12,500 AURA</p>
-                            <p class="text-sm text-accentGreen mt-1">≈ $60,250.00</p>
-                        </div>
-                        <div class="bg-cardBg border border-gray-800 p-6 rounded-3xl shadow-xl">
-                            <p class="text-xs text-gray-400 uppercase font-semibold">Tether USD</p>
-                            <p class="text-3xl font-extrabold mt-2">35,000 USDT</p>
-                            <p class="text-sm text-gray-400 mt-1">≈ $35,000.00</p>
+                            <p class="text-xs text-gray-400 uppercase font-semibold">Bitcoin</p>
+                            <p class="text-2xl font-extrabold mt-2">1.25 BTC</p>
+                            <p class="text-sm text-accentGreen mt-1">≈ $80,250.00</p>
                         </div>
                         <div class="bg-cardBg border border-gray-800 p-6 rounded-3xl shadow-xl">
                             <p class="text-xs text-gray-400 uppercase font-semibold">Ethereum</p>
-                            <p class="text-3xl font-extrabold mt-2">18.45 ETH</p>
+                            <p class="text-2xl font-extrabold mt-2">18.45 ETH</p>
                             <p class="text-sm text-accentGreen mt-1">≈ $45,204.34</p>
+                        </div>
+                        <div class="bg-cardBg border border-gray-800 p-6 rounded-3xl shadow-xl">
+                            <p class="text-xs text-gray-400 uppercase font-semibold">Solana</p>
+                            <p class="text-2xl font-extrabold mt-2">145.00 SOL</p>
+                            <p class="text-sm text-accentGreen mt-1">≈ $20,662.50</p>
+                        </div>
+                        <div class="bg-cardBg border border-gray-800 p-6 rounded-3xl shadow-xl">
+                            <p class="text-xs text-gray-400 uppercase font-semibold">Tether USDT</p>
+                            <p class="text-2xl font-extrabold mt-2">35,000 USDT</p>
+                            <p class="text-sm text-gray-400 mt-1">≈ $35,000.00</p>
                         </div>
                     </div>
                 </section>
 
-                <!-- 6. SEND CRYPTO VIEW (With Configurable Success/Failure Note) -->
+                <!-- 7. SEND CRYPTO VIEW (With Configurable Success/Failure Note) -->
                 <section id="view-send" class="space-y-6 hidden">
                     <div class="max-w-lg mx-auto bg-cardBg border border-gray-800 rounded-3xl p-8 shadow-xl">
                         <h2 class="text-xl font-bold mb-2">Send Cryptocurrency</h2>
@@ -400,9 +511,13 @@
                                     <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Asset</label>
                                     <select id="send-asset" class="w-full bg-exchangeBg border border-gray-700 rounded-xl py-3 px-4 text-sm text-white focus:outline-none focus:border-yellow-400">
                                         <option value="USDT">USDT</option>
-                                        <option value="AURA">AURA</option>
-                                        <option value="ETH">ETH</option>
                                         <option value="BTC">BTC</option>
+                                        <option value="ETH">ETH</option>
+                                        <option value="SOL">SOL</option>
+                                        <option value="ADA">ADA</option>
+                                        <option value="XRP">XRP</option>
+                                        <option value="DOGE">DOGE</option>
+                                        <option value="AURA">AURA</option>
                                     </select>
                                 </div>
                                 <div>
@@ -421,7 +536,7 @@
                     </div>
                 </section>
 
-                <!-- 7. TRANSACTIONS VIEW -->
+                <!-- 8. TRANSACTIONS VIEW -->
                 <section id="view-transactions" class="space-y-6 hidden">
                     <h2 class="text-2xl font-extrabold">Transaction History</h2>
                     <div class="bg-cardBg border border-gray-800 rounded-3xl p-6 shadow-xl">
@@ -442,7 +557,7 @@
                     </div>
                 </section>
 
-                <!-- 8. SETTINGS VIEW -->
+                <!-- 9. SETTINGS VIEW -->
                 <section id="view-settings" class="space-y-6 hidden">
                     <h2 class="text-2xl font-extrabold">Security Settings</h2>
                     <div class="bg-cardBg border border-gray-800 rounded-3xl p-8 max-w-xl space-y-4 shadow-xl">
@@ -452,7 +567,7 @@
                         </div>
                         <div>
                             <label class="block text-xs font-semibold uppercase text-gray-400 mb-2">Security Level</label>
-                            <p class="text-sm font-semibold text-accentGreen">Hardware Key, 2FA & Anti-Phishing Code Active</p>
+                            <p class="text-sm font-semibold text-accentGreen">Hardware Key, 2FA & Browser Session Lock Active</p>
                         </div>
                         <button onclick="handleLogout()" class="px-5 py-2.5 bg-red-500/10 text-accentRed border border-red-500/30 rounded-xl text-sm font-bold hover:bg-red-500/20 transition">
                             Log Out of Session
@@ -486,6 +601,32 @@
         </div>
     </div>
 
+    <!-- ================= RECEIVE MODAL ================= -->
+    <div id="receive-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm hidden px-4">
+        <div class="max-w-md w-full bg-cardBg border border-gray-800 rounded-3xl p-6 sm:p-8 shadow-2xl text-center relative">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-bold">Receive Cryptocurrency</h3>
+                <button onclick="closeReceiveModal()" class="w-8 h-8 rounded-full bg-exchangeBg text-gray-400 hover:text-white flex items-center justify-center border border-gray-700">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <p class="text-xs text-gray-400 mb-6">Scan QR code or copy address to receive funds directly into your AuraVault wallet.</p>
+            
+            <div class="bg-white p-4 rounded-2xl w-48 h-48 mx-auto flex items-center justify-center mb-6 shadow-inner">
+                <i class="fa-solid fa-qrcode text-8xl text-black"></i>
+            </div>
+
+            <div class="bg-exchangeBg border border-gray-700 rounded-xl p-3 flex items-center justify-between text-xs font-mono text-yellow-400 mb-4">
+                <span class="truncate">0x8F92c14B9b42Ea71C99B42</span>
+                <button onclick="alert('Deposit address copied!')" class="text-gray-400 hover:text-white ml-2"><i class="fa-regular fa-copy"></i></button>
+            </div>
+
+            <button onclick="closeReceiveModal()" class="w-full py-3 rounded-xl font-bold text-black bg-yellow-400 hover:bg-yellow-300 transition">
+                Done
+            </button>
+        </div>
+    </div>
+
     <!-- ================= JAVASCRIPT & BACKEND CONFIGURATION ================= -->
     <script>
         // =========================================================================
@@ -495,8 +636,8 @@
         const CONFIG = {
             // MULTI-USER DATABASE (Add as many users as you want)
             users: [
-                { username: "admin", pin: "1234", name: "Ebonine Chiedozie", balance: 140250.00 },
-                { username: "client1", pin: "5678", name: "VIP Trader One", balance: 25000.00 },
+                { username: "admin", pin: "1234", name: "Ebonine Chiedozie", balance: 180250.00 },
+                { username: "client1", pin: "5678", name: "VIP Trader One", balance: 45000.00 },
                 { username: "investor", pin: "9999", name: "Global Fund Account", balance: 500000.00 }
             ],
 
@@ -507,7 +648,7 @@
             }
         };
 
-        // Active session state
+        // Active session state (Using sessionStorage so closing browser locks site)
         let currentUser = null;
         let isBalanceHidden = false;
 
@@ -563,16 +704,20 @@
 
         // Multi-Page View Switcher
         function switchView(viewName) {
-            const views = ['dashboard', 'markets', 'trade', 'earn', 'wallet', 'send', 'transactions', 'settings'];
+            const views = ['dashboard', 'markets', 'chart', 'trade', 'earn', 'wallet', 'send', 'transactions', 'settings'];
             views.forEach(v => {
-                document.getElementById(`view-${v}`).classList.add('hidden');
+                const viewEl = document.getElementById(`view-${v}`);
+                if (viewEl) viewEl.classList.add('hidden');
+                
                 const navBtn = document.getElementById(`nav-${v}`);
                 if (navBtn) {
                     navBtn.className = "w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition text-gray-400 hover:text-white hover:bg-gray-800/50";
                 }
             });
 
-            document.getElementById(`view-${viewName}`).classList.remove('hidden');
+            const targetView = document.getElementById(`view-${viewName}`);
+            if (targetView) targetView.classList.remove('hidden');
+
             const activeNav = document.getElementById(`nav-${viewName}`);
             if (activeNav) {
                 activeNav.className = "w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition text-yellow-400 bg-yellow-500/10";
@@ -598,6 +743,13 @@
         }
         function closeDepositModal() {
             document.getElementById('deposit-modal').classList.add('hidden');
+        }
+
+        function openReceiveModal() {
+            document.getElementById('receive-modal').classList.remove('hidden');
+        }
+        function closeReceiveModal() {
+            document.getElementById('receive-modal').classList.add('hidden');
         }
 
         // Handle Wallet Funding (Instant balance reflection)
